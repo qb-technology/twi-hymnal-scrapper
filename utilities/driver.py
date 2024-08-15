@@ -20,9 +20,10 @@ class WebDriver:
 
     def __init__(self):
         self.options.add_argument("start-maximized")
-        self.options.add_argument('--headless=new')
+        self.options.add_argument('--headless')
         self.options.add_argument('--disable-dev-shm-usage')
         self.options.add_argument('--disable-gpu')
+        self.options.add_argument('--window-size=1920x1080')
         self.options.add_argument('--no-sandbox')
 
     def setup(self, url, type):
