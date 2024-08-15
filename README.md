@@ -25,3 +25,6 @@ pip install -r requirements.txt
 ```sh
 python main.py
 ```
+
+## Result
+The text are saved as json in a directory called data
