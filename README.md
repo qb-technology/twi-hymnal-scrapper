@@ -10,7 +10,10 @@ The church wanted to present the twi version of the hymnal during church service
 - Selenium
 
 ## Installation
-I assume you have already installed python and that selenium chrome driver is also on your system path. check python and selenium documentation
+I assume you have already installed python and that selenium chrome/firefox driver is also on your system path. check python and selenium documentation
+
+- Open the utilities/driver.py and change the driver to either chrome/firefox to suit your needs.
+- Refer to selenium documentation for more information
 
 create a virtual environment
 ```sh

@@ -102,8 +102,3 @@ class WebDriver:
 
 if (__name__ == '__main__'):
     driver = WebDriver()
-    driver.type = 'num'
-    content = driver.readJSON()
-    pprint(content)
-    # payload = [{'id': 2}]
-    # driver.writeJSON(payload)
