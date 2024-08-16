@@ -92,7 +92,9 @@ class WebDriver:
                 by=By.TAG_NAME, value='embed')
             if (embed):
                 mp3 = embed.get_attribute('src')
-                mp3 = '' if mp3.endswith('0.mp3') else mp3
+                mp3_list = mp3.split('/')
+                if (mp3_list[-1] == '0.mp3'):
+                    mp3 = ''
             print(mp3)
         except:
             pass
