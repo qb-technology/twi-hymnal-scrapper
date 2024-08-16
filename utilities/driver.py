@@ -75,7 +75,15 @@ class WebDriver:
         # title = header_sections[1].find_element(by=By.TAG_NAME, value='br').text
         title = title_list[-1]
 
-        author = header_sections[2].text.split('\n')[-1]
+        author = ''
+
+        try:
+            author = header_sections[2].text.split('\n')[-1]
+        except:
+            if len(title_list) > 0:
+                title = title_list[0]
+                author = title_list[1]
+            pass
 
         # mp3
         mp3 = ''
