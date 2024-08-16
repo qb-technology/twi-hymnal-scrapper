@@ -63,22 +63,49 @@ class WebDriver:
     def readPage(self, url):
         twi = ''
         eng = ''
+        h_number = ''
         title = ''
+        author = ''
         self.driver.get(url)
-        title = self.driver.find_element(by=By.TAG_NAME, value='b').text
+        h_number = self.driver.find_element(by=By.TAG_NAME, value='b').text
+
+        header = self.driver.find_element(by=By.TAG_NAME, value='tbody')
+        header_sections = header.find_elements(by=By.TAG_NAME, value='td')
+        title_list = header_sections[1].text.split('\n')
+        # title = header_sections[1].find_element(by=By.TAG_NAME, value='br').text
+        title = title_list[-1]
+
+        author = header_sections[2].text.split('\n')[-1]
+
+        # mp3
+        mp3 = ''
+        try:
+            embed = header_sections[2].find_element(
+                by=By.TAG_NAME, value='embed')
+            if (embed):
+                mp3 = embed.get_attribute('src')
+                mp3 = '' if mp3.endswith('0.mp3') else mp3
+            print(mp3)
+        except:
+            pass
         div_contains = self.driver.find_elements(
             by=By.CSS_SELECTOR, value='td>div')
         twi = div_contains[0].text
         twi = self.parseTwi(twi)
+
         if (len(div_contains) > 1):
             eng = div_contains[1].text
-        print(f'hymn {self.type.capitalize()} {title}')
+        print(f'hymn {self.type.capitalize()} {h_number}')
         res = {
-            'twi': twi,
-            'eng': eng,
-            'title': title
+            'twi': twi.split('\n\n'),  # splitting into stanzas
+            'eng': eng.split('\n\n'),  # splitting into stanzas
+            'number': h_number,
+            'title': title,
+            'author': author,
+            'mp3': mp3
         }
         self.json_data.append(res)
+        pprint(res)
         return res
 
     def readJSON(self):
