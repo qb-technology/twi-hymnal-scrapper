@@ -14,6 +14,16 @@ I assume you have already installed python and that selenium chrome/firefox driv
 
 - Open the utilities/driver.py and change the driver to either chrome/firefox to suit your needs.
 - Refer to selenium documentation for more information
+Example: Linux
+```sh
+sudo apt update
+sudo apt install -y unzip wget # if unzip and wget is not installed
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install -y ./google-chrome-stable_current_amd64.deb
+google-chrome --version # result 127.0.6533.119
+```
+- go to [chrome driver](https://sites.google.com/chromium.org/driver/downloads?authuser=0), download the chrome driver that matches your version of installed chrome
+- move the chromedriver to drivers directory
 
 create a virtual environment
 ```sh

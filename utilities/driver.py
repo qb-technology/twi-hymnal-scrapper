@@ -26,10 +26,18 @@ class WebDriver:
         self.options.add_argument('--window-size=1920x1080')
         self.options.add_argument('--no-sandbox')
 
+        file_directory = os.path.dirname(os.path.abspath(__file__))
+        os.chdir(os.path.join(file_directory, '..'))
+        driver_path = os.path.join(
+            os.getcwd(), 'driver', 'chromedriver')
+
+        self.service = Service(executable_path=driver_path)
+
     def setup(self, url, type):
         assert isinstance(url, str)
         assert isinstance(type, str)
-        self.driver = webdriver.Chrome(options=self.options)
+        self.driver = webdriver.Chrome(
+            options=self.options, service=self.service)
         self.url = url
         self.type = type
         self.driver.get(self.url)
