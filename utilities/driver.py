@@ -105,7 +105,7 @@ class WebDriver:
             'mp3': mp3
         }
         self.json_data.append(res)
-        pprint(res)
+        # pprint(res)
         return res
 
     def readJSON(self):
